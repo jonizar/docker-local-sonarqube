@@ -1,0 +1,31 @@
+version: '3.8'
+
+networks:
+  default:
+    external: true
+    name: my-bridge-network
+
+services:
+  sonar:
+    image: amd64/sonarqube 
+    # ganti menjadi amd64/sonarqube untuk windows atau linux atau mac intel atau arm64v8/sonarqube  untuk mac
+    environment:
+      # - sonar.forceAuthentication=true
+      SONAR_JDBC_URL: jdbc:postgresql://postgres:5432/sonarqube
+      SONAR_JDBC_USERNAME: postgres
+      SONAR_JDBC_PASSWORD: postgres
+      SONAR_ES_BOOTSTRAP_CHECKS_DISABLE: "true"
+      SONAR_FORCEAUTHENTICATION: "true"
+    volumes:
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_extensions:/opt/sonarqube/extensions
+      - sonarqube_logs:/opt/sonarqube/logs
+    ports:
+      - 9002:9000
+      - 9001:9001
+    restart: always
+
+volumes:
+  sonarqube_data:
+  sonarqube_extensions:
+  sonarqube_logs:
