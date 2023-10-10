@@ -18,10 +18,10 @@ docker network create my-bridge-network
   docker-compose -f postgresql.yaml up -d
   docker-compose -f sonarqube.yaml up -d
   ```
-9. koneksikan postgres dan buat database
-10. buka browser http://localhost:9002 masukan password default admin/admin
+9. create database in postgresql
+10. open browser http://localhost:9002 input default password **admin/admin**
 
-untuk scan project kita pakai sonar-scanner yang telah di install lalu buat token terlebih dahulu dengan cara: login → Administration → Security → Users → create user atau pakai user existing → klik di row token untuk generate token
+to scan project, use sonar-scanner then create token, follow this step: login → Administration → Security → Users → create user or use user existing → click in row token to generate token.
 
 run this command to scan in project directory
 
